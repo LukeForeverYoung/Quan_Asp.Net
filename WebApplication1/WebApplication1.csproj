@@ -44,10 +44,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -67,9 +76,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -81,22 +87,59 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bird.gif" />
+    <Content Include="blink.gif" />
+    <Content Include="cloud_wd.png" />
+    <Content Include="GToken.js" />
+    <Content Include="icon.jpg" />
+    <Content Include="index_1.jpg" />
+    <Content Include="index_2.jpg" />
+    <Content Include="m.mp3" />
+    <Content Include="MP_verify_8z3dinm8Nax8VydW.txt" />
+    <Content Include="quan.png" />
+    <Content Include="share.png" />
+    <Content Include="showZan.html" />
+    <Content Include="showZan.js" />
+    <Content Include="showZan_background.jpg" />
+    <Content Include="suo.png" />
     <Content Include="addQuest.html" />
     <Content Include="addQuest.js" />
-    <Content Include="click.html" />
+    <Content Include="addQuest_background.jpg" />
+    <Content Include="btn_background.png" />
+    <Content Include="cloud.png" />
+    <Content Include="down.png" />
+    <Content Include="good.html" />
+    <Content Include="good_background.jpg" />
+    <Content Include="head.jpg" />
+    <Content Include="img_2.png" />
+    <Content Include="img_3.png" />
+    <Content Include="index.css" />
     <Content Include="index.html" />
-    <Content Include="distance.js" />
+    <Content Include="index.js" />
     <Content Include="Global.asax" />
     <Content Include="indexDemo.html" />
-    <Content Include="Web.config" />
+    <Content Include="index_background.jpg" />
+    <Content Include="moon.png" />
+    <Content Include="public.css" />
+    <Content Include="qr.js" />
+    <Content Include="Text_head.png" />
+    <Content Include="ved.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="zanBackground.jpg" />
+    <Content Include="zanPage.html" />
+    <Content Include="zanPage.js" />
+    <Content Include="zzsc.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ZansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

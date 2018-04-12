@@ -2,17 +2,58 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="public.css">
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script src="addQuest.js"></script>
-    <title></title>
+    <script src="GToken.js"></script>
+
+    <title>
+        快来帮我助力免费赢取永州千人团圆宴入场券
+    </title>
 </head>
-<body>
-    <p id="dis"></p>
-    <form action="form.asp" method="post">
-        姓名：<br />
-        <input type="text" name="name"/>
-        手机号码：<br />
-        <input type="text" name="phone"/>
-        <button>我要报销火车票</button>
-    </form>
+<body style="background:url(addQuest_background.jpg) no-repeat; background-size: 100%;">
+    <audio id="media" autoplay="autoplay" loop="loop">
+        <source src="m.mp3" type="audio/mp3">
+    </audio>
+    <img style="position:absolute;z-index:0;float:left" src="bird.gif" />
+
+    <div style=" position:absolute;left:50%;top:36%;width:70%">
+        <div style="left:-50%; position: relative;">
+            <div id="imgDiv" class="form-group">
+                <div style="position:relative;">
+                    <center>
+                        <img class="img_1" src="img_2.png" style="width:100%;" />
+                    </center>
+                </div>
+            </div>
+            <div class="form-group">
+                <center>
+                    <input style="width:inherit" type="text" class="form-control input-sm" id="name" placeholder="姓名" />
+                </center>
+            </div>
+            <div class="form-group">
+                <center>
+                    <input style="width:inherit" type="text" class="form-control input-sm" id="phone" placeholder="电话号码" />
+                </center>
+            </div>
+            <center>
+                <div class="fblink" style="position: relative; width:145px;height:65px;" onclick="pushPost();">
+                    <center>
+                        <button style="background:url('btn_background.png');background-size:100% 100%;border:none;color:papayawhip" class="btn btn-default btn-lg"><strong id="pushBtn">团圆宴通道</strong> </button>
+                    </center>
+                    <img src="cloud.png" width="140" height="60" style="position: absolute; top:-5%; left:0%;"><img>
+                </div>
+            </center>
+        </div>
+
+
+    </div>
+
+
 </body>
 </html>

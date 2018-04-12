@@ -2,11 +2,202 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <script src="distance.js"></script>
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Qdd3sbaiMd9FhQThjNmffkCQIAULhcW7"></script>
+    <script src="GToken.js"></script>
+    <link rel="stylesheet" href="public.css">
+    <style type="text/css">
+        .Text {
+            font-family: 黑体;
+            font-size: 30px;
+            color: #f5c491;
+            left: 18%;
+            height: 60px;
+        }
+    </style>
+    <script src="index.js"></script>
+    <style type="text/css">
+        button {
+            font-weight: bold;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Verdana;
+        }
+
+        body,
+        html {
+            height: 100%;
+            background-color: #000000;
+        }
+
+        .Text {
+            display: none;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wrap2 {
+            width: 100%;
+            height: 1000%;
+            transition: 0.3s linear
+        }
+
+        .page {
+            width: 100%;
+            height: 10%
+        }
+    </style>
+    <title>
+        快来帮我助力免费赢取永州千人团圆宴入场券
+    </title>
 </head>
 <body>
-    <button id="disBtn" onclick="getdis()">获取位置</button>
-    
+    <audio id="media" autoplay="autoplay" loop="loop">
+        <source src="m.mp3" type="audio/mp3">
+    </audio>
+    <div class="wrap" id="wrap">
+        <div class="wrap2" id="wrap2">
+            <div class="page" style="background:url(head.jpg) no-repeat; background-size: 100%;">
+                <img style="position:absolute ;float:left" src="bird.gif" />
+                <img style="position:relative ;float:left;top:80%;width:30%" src="blink.gif" />
+                <center id="down_0" style=" position:relative;top:70%;width:100%;height:10%">
+                    <img id="hot_fix_down" src="down.png" style=" position:absolute;width:10%;opacity:0.7" />
+                </center>
+                <div class="img_1" style="float:left;display:none; position:relative; left:-20%;top:0%">
+                    <img src="Text_head.png" style="width:70%;" />
+                </div>
+
+            </div>
+            <div class="page" style="background:url(index_1.jpg) no-repeat; background-size: 100%;">
+                <center id="down_1" style="position:relative;top:70%;width:100%">
+                    <img src="down.png" style=" width:10%;opacity:0.7" />
+                </center>
+            </div>
+            <div class="page" style="background:url(index_2.jpg) no-repeat; background-size: 100%;">
+                <center id="down_2" style="position:relative;top:70%;width:100%">
+                    <img src="down.png" style=" width:10%;opacity:0.7" />
+                </center>
+            </div>
+            <div class="page" style="background:url(index_background.jpg) no-repeat; background-size: 100%;">
+                <img style="position:absolute ;float:left" src="bird.gif" />
+                <img style="position:relative ;float:left;top:80%;width:30%" src="blink.gif" />
+                <div style="position:relative; width:100%; height:100%; z-index:0">
+                    <img id="moon" src="moon.png" style="position:absolute;left:50%;top:30%;width:35%" />
+                    <div class="Text" style="font-size: 50px; position:absolute;z-index:0;top:5%">我距离</div>
+                    <div class="Text" style=" position:absolute;z-index:0;top:15%">永州市千人团圆宴<br />门票领取点</div>
+                    <div class="Text" style="font-size: 50px; position:absolute;z-index:0;top:27%" id="disText">还有???公里</div>
+                    <div style=" position:absolute;z-index:0;left:18%;top:40%">
+                        <div class="fblink" style="position: relative; width:145px;height:65px;" onclick="getdis();">
+                            <center>
+                                <button style="background:url('btn_background.png');background-size:100% 100%;border:none;color:papayawhip;" class="btn btn-default btn-lg"><strong id="disBtn">获取我的位置</strong></button>
+                            </center>
+                            <img src="cloud.png" width="140" height="60" style="position: absolute; top:-5%; left:0%;">
+                            <img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //重要！禁止移动端滑动的默认事件
+        document.body.addEventListener('touchmove', function (event) {
+            event = event ? event : window.event;
+            if (event.preventDefault) {
+                event.preventDefault()
+            } else {
+                event.returnValue = false
+            }
+        }, false)
+        var pages = function (obj) {
+            var box = document.getElementById(obj.wrap);
+            var box2 = document.getElementById(obj.wrap2);
+            console.log(obj);
+            var len = obj.len;
+            var n = obj.n;
+            var startY, moveY, cliH;
+            //获取屏幕高度
+            var getH = function () {
+                cliH = document.body.clientHeight;
+                console.log(cliH);
+            };
+            getH();
+            $("#hot_fix_down").css("right", document.body.clientWidth / 2 - $("#hot_fix_down").width()/2 + "px");
+            window.addEventListener('resize', getH, false);
+            //touchStart
+            var touchstart = function (event) {
+                if (!event.touches.length) {
+                    return;
+                }
+                startY = event.touches[0].pageY;
+                moveY = 0;
+            };
+            //touchMove
+            var touchmove = function (event) {
+                if (!event.touches.length) {
+                    return;
+                }
+                moveY = event.touches[0].pageY - startY;
+                box2.style.transform = 'translateY(' + (-n * cliH + moveY) + 'px)'; //根据手指的位置移动页面
+            };
+            //touchEnd
+            var touchend = function (event) {
+                //位移小于+-50的不翻页
+                var changeF = false;
+                if (moveY < -50) {
+                    n++;
+                    if(n==3)
+                        changeF = true;
+                }
+                if (moveY > 50) n--;
+                //最后&最前页控制
+                if (n < 0) n = 0;
+                if (n > len - 1) n = len - 1;
+                //重定位
+                box2.style.transform = 'translateY(' + (-n * 10) + '%)'; //根据百分比位置移动页面
+                console.log(n);
+                if (n == 0) {
+                    $(".img_1").slideDown(3000);
+                    $(".Text").hide();
+                }
+                else if (changeF) {
+                    $(".Text").hide();
+                    $(".Text").slideDown(3000);
+                    $(".img_1").hide();
+                    $("#moon").css("top", "5%");
+                    $("#moon").animate({
+                        top: "40%"
+                    }, 4000);
+                }
+            };
+            //touch事件绑定
+            box.addEventListener("touchstart", function (event) {
+                touchstart(event)
+            }, false);
+            box.addEventListener("touchmove", function (event) {
+                touchmove(event)
+            }, false);
+            box.addEventListener("touchend", function (event) {
+                touchend(event)
+            }, false);
+        };
+        pages({
+            wrap: 'wrap', //.wrap的id
+            wrap2: 'wrap2', //.wrap2的id
+            len: 4, //一共有几页
+            n: 0 //页面一打开默认在第几页？第一页就是0，第二页就是1
+        });
+    </script>
 </body>
 </html>
